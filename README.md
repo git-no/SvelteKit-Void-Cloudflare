@@ -1,42 +1,34 @@
-# sv
+# SvelteKit-Void-Cloudflare Template
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+**Fast and simple SvelteKite deployment to Cloudflare.**
 
-## Creating a project
+Template to deploy **SvelteKit** easily to **Cloudflare** and use Cloduflare resources within the SvelteKit app by Void adapter.
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Repository contains
 
-```sh
-# create a new project
-npx sv create my-app
-```
+- [SvelteKit 2 (Svelte 5)](https://svelte.dev)
+- [TailwindCSS](https://tailwindcss.com)
+- [Void](https://void.cloud) - Ship Vite apps at warp speed
 
-To recreate this project with the same configuration:
+[Supported App Types](https://void.cloud/guide/app-types#void-apps): Void apps: Vite apps powered by Void's framework layer, including [API routes](https://void.cloud/guide/server-routing), [pages mode](https://void.cloud/guide/pages-routing/overview), [auth](https://void.cloud/guide/auth) - [better-auth](https://better-auth.com) support, [crons](https://void.cloud/guide/jobs), and [queues](https://void.cloud/guide/queues)
 
-```sh
-# recreate this project
-pnpm dlx sv@0.17.0 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" ai-tools="ide:claude-code,vscode+delivery:plugin+tools:mcp,svelte-code-writer,svelte-core-bestpractices,svelte-file-editor+mcpSetup:remote" --install pnpm .
-```
+## Demo
 
-## Developing
+See this repository live at [Cloudflare]()
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Start
 
-```sh
-npm run dev
+1. Clone this repository
+2. Install packages in the repository directory by using `pnpm i`
+3. Change the app name in `wrangler.jsonc` file.
+4. Deploy to Cloudflare by
+    - `void auth login`
+    - `void deploy`
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## References
 
-## Building
+[Using Void Platfrom Features in SvelteKit](https://void.cloud/integrations/frameworks/sveltekit#using-void-platform-features)
 
-To create a production version of your app:
+[Void SvelteKit Integrations](https://void.cloud/integrations/frameworks/sveltekit)
 
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+SvelteKit uses Vite internally with its own Cloudflare adapter (`@sveltejs/adapter-cloudflare`). The `voidPlugin()` in the Vite config handles binding inference, typed DB, and migrations during development.
